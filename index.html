@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoworkSpace Express — Reserva en Vivo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="front.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div id="app">
+            <div class="header">
+                <span class="header-badge">Sistema en Tiempo Real</span>
+                <h3>CoworkSpace Express — Reserva en Vivo</h3>
+                <p class="subtitle">Selecciona tu horario de reserva en bloques de horas hábiles (08:00 a 18:00).</p>
+            </div>
+
+            <div class="form-grid">
+                <div class="field-group room-field">
+                    <label class="field-label" for="room">Espacio</label>
+                    <select id="room" onchange="cambiarEspacio()">
+                        <option value="Sala Focus A">Sala Focus A</option>
+                        <option value="Sala Innovación B">Sala Innovación B</option>
+                        <option value="Sala Creativa C">Sala Creativa C</option>
+                    </select>
+                </div>
+
+                <div class="field-group">
+                    <label class="field-label" for="start">Inicio</label>
+                    <input id="start" type="number" placeholder="8-17" min="8" max="17" value="13">
+                </div>
+
+                <div class="field-group">
+                    <label class="field-label" for="end">Fin</label>
+                    <input id="end" type="number" placeholder="9-18" min="9" max="18" value="15">
+                </div>
+
+                <button type="button" onclick="reservar()">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    Reservar
+                </button>
+            </div>
+
+            <div id="msg"></div>
+
+            <div class="timeline-card">
+                <div class="timeline-header">
+                    <span class="timeline-title">Disponibilidad de Hoy</span>
+                    <div class="legend">
+                        <div class="legend-item"><span class="dot free"></span> Libre</div>
+                        <div class="legend-item"><span class="dot busy"></span> Ocupado</div>
+                    </div>
+                </div>
+
+                <div class="timeline-grid" id="timelineSlots">
+                    <!-- Generado dinámicamente -->
+                </div>
+
+                <div class="timeline-hours">
+                    <span>8h</span><span>9h</span><span>10h</span><span>11h</span><span>12h</span>
+                    <span>13h</span><span>14h</span><span>15h</span><span>16h</span><span>17h</span>
+                </div>
+
+                <div class="res-list" id="resList">
+                    <!-- Chips de reservas activas -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="funciones.js"></script>
+</body>
+
+</html>
